@@ -6,7 +6,7 @@ const daPlayAudio = () => {
 
 const botaoPlay = document.getElementById("play") as HTMLButtonElement
 const pause = document.getElementById("pause") as HTMLButtonElement
-const playsOfEblock = (valor1: HTMLButtonElement, valor2:  HTMLButtonElement) => {
+const playsOfEblock = (valor1: HTMLButtonElement, valor2:  HTMLButtonElement): void => {
  valor1.style.display = "none"
  valor2.style.display = "block"
 }
@@ -17,7 +17,14 @@ botaoPlay.addEventListener("click", () => {
 })
 
 
+const pausarMusica = () => {
+  audio.pause()
+}
 
+pause.addEventListener("click", () => {
+  pausarMusica()
+  playsOfEblock(pause, botaoPlay)
+})
 
 const inputVolume = document.getElementById("baixarVolume") as HTMLInputElement
 
@@ -30,7 +37,3 @@ const baixarVolumeFuncao = () => {
 inputVolume.addEventListener("input", () => {
   baixarVolumeFuncao()
 })
-
-
-
-
