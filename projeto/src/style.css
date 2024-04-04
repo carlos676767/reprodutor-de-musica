@@ -46,3 +46,7 @@ i{
   display: flex;
   justify-content: center;
 }
+
+#pause{
+  display: none;
+}
