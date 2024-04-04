@@ -6,9 +6,9 @@ const daPlayAudio = () => {
 
 const botaoPlay = document.getElementById("play") as HTMLButtonElement
 const pause = document.getElementById("pause") as HTMLButtonElement
-const playsOfEblock = (valor1: HTMLButtonElement, valor2:  HTMLButtonElement): void => {
- valor1.style.display = "none"
- valor2.style.display = "block"
+const playsOfEblock = (valor1: HTMLElement, valor2: HTMLElement): void => {
+  valor1.style.display = "none"
+  valor2.style.display = "block"
 }
 
 botaoPlay.addEventListener("click", () => {
@@ -29,7 +29,7 @@ pause.addEventListener("click", () => {
 const inputVolume = document.getElementById("baixarVolume") as HTMLInputElement
 
 const baixarVolumeFuncao = () => {
-  const obterVolumes = parseInt(inputVolume.value)/100
+  const obterVolumes = parseInt(inputVolume.value) / 100
   audio.volume = obterVolumes
 }
 
@@ -40,10 +40,25 @@ inputVolume.addEventListener("input", () => {
 
 const audioMutado = document.querySelector(".fa-volume-xmark") as HTMLElement
 
-const mutarAudio = () => {
-  audio.muted = true
+const multarEdesbumutar = (mute: boolean) => {
+  audio.muted = mute
 }
 
 audioMutado.addEventListener("click", () => {
-  mutarAudio()
+  multarEdesbumutar(true)
+  playsOfEblock(audioMutado, botaoDesmutado)
+})
+
+
+const botaoDesmutado = document.getElementById("desmutado") as HTMLElement
+console.log(botaoDesmutado);
+
+
+const desmultarAudio = () => {
+  multarEdesbumutar(false)
+}
+
+botaoDesmutado.addEventListener("click", () => {
+  desmultarAudio()
+  playsOfEblock(botaoDesmutado, audioMutado)
 })
