@@ -1,0 +1,38 @@
+*{
+  margin: 0;
+}
+
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.filha{
+  background-color: #2F2E30;
+  padding: 30px;
+  border-radius: 10px;
+}
+img{
+  width: 300px;
+}
+
+.players{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+button{
+  padding: 3px;
+  border: none;
+  background-color: #2F2E30;
+}
+
+i{
+  color: white;
+  font-size: 15px;
+  font-size: 30px;
+}
