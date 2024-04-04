@@ -37,3 +37,13 @@ const baixarVolumeFuncao = () => {
 inputVolume.addEventListener("input", () => {
   baixarVolumeFuncao()
 })
+
+const audioMutado = document.querySelector(".fa-volume-xmark") as HTMLElement
+
+const mutarAudio = () => {
+  audio.muted = true
+}
+
+audioMutado.addEventListener("click", () => {
+  mutarAudio()
+})

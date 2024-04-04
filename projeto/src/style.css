@@ -1,52 +1,58 @@
-*{
+* {
   margin: 0;
 }
 
-main{
+main {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.filha{
+.filha {
   background-color: #2F2E30;
   padding: 30px;
   border-radius: 10px;
 }
-img{
+
+img {
   width: 300px;
 }
 
-.players{
+.players {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
 }
 
-button{
+button {
   padding: 3px;
   border: none;
   background-color: #2F2E30;
 }
 
-i{
+i {
   color: white;
   font-size: 15px;
   font-size: 30px;
 }
 
-.fa-volume-low, .fa-volume-high{
+.fa-volume-low,
+.fa-volume-high,
+.fa-volume-xmark {
   font-size: 10px;
   font-size: 10px;
 }
 
-.inputs{
+
+.inputs {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
-#pause{
+#pause {
   display: none;
 }
