@@ -72,3 +72,13 @@ const reiniciarPagina = () => {
 restart.addEventListener("click", () => {
   reiniciarPagina()
 })
+
+const botaoRepitir = document.querySelector(".fa-repeat") as HTMLElement
+
+const musicaEmLoppInfinito = () => {
+  audio.loop = true
+}
+
+botaoRepitir.addEventListener("click", () => {
+  musicaEmLoppInfinito()
+})
