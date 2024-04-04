@@ -62,3 +62,13 @@ botaoDesmutado.addEventListener("click", () => {
   desmultarAudio()
   playsOfEblock(botaoDesmutado, audioMutado)
 })
+
+const restart = document.getElementById("restart") as HTMLElement
+
+const reiniciarPagina = () => {
+  location.reload()
+}
+
+restart.addEventListener("click", () => {
+  reiniciarPagina()
+})
