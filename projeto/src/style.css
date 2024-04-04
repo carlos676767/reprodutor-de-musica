@@ -42,7 +42,8 @@ i {
 .fa-volume-high,
 .fa-volume-xmark,
 .fa-arrows-spin,
-.fa-repeat {
+.fa-repeat,
+.fa-heart {
   font-size: 10px;
   font-size: 10px;
 }
@@ -55,6 +56,15 @@ i {
   align-items: center;
 }
 
-#pause , #desmutado{
+#pause,
+#desmutado {
   display: none;
+}
+
+.coracaoVermelho {
+  color: red;
+}
+
+.coracaoWhite {
+  color: white;
 }
