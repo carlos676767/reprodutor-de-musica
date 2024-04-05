@@ -15,7 +15,7 @@ const musicasGeradas = async () => {
     const response = await fetch("https://api.deezer.com/chart/0/tracks");
     const date = await response.json();
     date.data.forEach((albuns: any) => {
-      const {title, artist, preview, album} = albuns
+      const { title, artist, preview, album } = albuns
       tituloMusicas.push(title)
       artistas.push(artist.name)
       musicas.push(preview)
@@ -26,6 +26,7 @@ const musicasGeradas = async () => {
     console.log(erro)
   }
 }
+
 const progress = document.querySelector("progress") as HTMLProgressElement
 
 const atualiarSegundosTempMusiuc = () => {
@@ -37,8 +38,19 @@ const atualiarSegundosTempMusiuc = () => {
   tempMusic.innerHTML = progresso
 }
 
+const atualiarBarraProgresso = () => {
+  const progressoMusica = document.getElementById("progressoMusica") as HTMLProgressElement
+  const progressoo = (audio.currentTime / audio.duration) * 100
+  progressoMusica.value = progressoo
+  if (progressoo === 100) {
+    progressoMusica.value = 0
+  }
+}
+
+
 audio.addEventListener("timeupdate", () => {
- atualiarSegundosTempMusiuc();
+  atualiarSegundosTempMusiuc();
+  atualiarBarraProgresso();
 })
 
 const testes = () => {
