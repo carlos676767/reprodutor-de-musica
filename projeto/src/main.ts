@@ -1,23 +1,38 @@
-const musicasGeradas = async () => {
-  const token = "BQA3cmSoYMWLQAg_com4plDvG3q5FcfsY4SvBywPWHbp89XPhalaZ3mK7B27rCk3lvXtlKAECEc9RE3jGi6wYOVO5UEbXYelE61-95EjK8yffeCCckUz2amhKcc5FZ-RmhM5iXmbJWZWtwod_df7O5b-VKj7EeVf9pue9OsXwOPm_c5GcrTYXgOumQRkpobKnOnX17qjUfptkyLVYR1C1F2UAkeZqc0qjWYgnbdksqE0f2Nb1B81egxz4JuMFViwKpIdkZDcfkGraOsDrMAN"
-  try {
-    const data = await fetch(`http://ws.audioscrobbler.com/2.0/?method=track.search&track=enter+sandman&api_key=0e6a2fc1d401d2165d6a012ea73231e3&format=json    `, {
-      method: "GET",
-   
-    })
-    const response = await data.json()
-    console.log(response);
+const audio = new Audio()
 
+const colocarAudio = (link: string) => {
+  audio.src = link
+}
+
+
+const tituloMusicas: any[] = []
+const artistas: any[] = []
+const musicas: any[] = []
+
+const musicasGeradas = async () => {
+  try {
+    const response = await fetch("https://api.deezer.com/chart/0/tracks");
+    const date = await response.json();
+    date.data.forEach((albuns: any) => {
+      const {title, artist, preview} = albuns
+      tituloMusicas.push(title)
+      artistas.push(artist.name)
+      musicas.push(preview)
+    });
   } catch (erro) {
-    console.log(erro);
-    
+    console.log(erro)
   }
 }
 
 musicasGeradas()
 
+const imagem = document.querySelector("img") as HTMLImageElement
+const recberImagem = (link: string) => {
+  imagem.src = link
+  console.log(imagem);
 
-const audio = new Audio("m.mp3")
+}
+
 
 const daPlayAudio = () => {
   audio.play()
@@ -73,7 +88,6 @@ audioMutado.addEventListener("click", () => {
 const botaoDesmutado = document.getElementById("desmutado") as HTMLElement
 
 
-
 const desmultarAudio = () => {
   multarEdesbumutar(false)
 }
@@ -103,8 +117,8 @@ botaoRepitir.addEventListener("click", () => {
   musicaEmLoppInfinito()
 })
 
-const like = document.querySelector(".fa-heart") as HTMLElement
 
+const like = document.querySelector(".fa-heart") as HTMLElement
 
 like.addEventListener("click", () => {
   like.classList.add("coracaoVermelho")
