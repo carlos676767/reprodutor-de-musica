@@ -27,17 +27,22 @@ const musicasGeradas = async () => {
   }
 }
 const progress = document.querySelector("progress") as HTMLProgressElement
-audio.addEventListener("timeupdate", () => {
+
+const atualiarSegundosTempMusiuc = () => {
+  const tempMusic = document.getElementById("tempMusic") as HTMLParagraphElement
   const obterTemp = Math.floor(audio.currentTime)
   const minutos = Math.floor(obterTemp / 60);
   const segundos = obterTemp - minutos * 60;
   const progresso = `${minutos} ${segundos}`
-  const teste = Number(progresso)
-  progress.value = teste
+  tempMusic.innerHTML = progresso
+}
+
+audio.addEventListener("timeupdate", () => {
+ atualiarSegundosTempMusiuc();
 })
 
 const testes = () => {
-  colocarAudio(musicas[5])
+  colocarAudio(musicas[4])
 }
 
 
