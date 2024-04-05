@@ -21,13 +21,37 @@ const musicasGeradas = async () => {
       musicas.push(preview)
       armazenarImagensMusicas.push(album.cover_medium)
     });
-    testes()
+    passarMusicas()
+    musicaDeAgora()
   } catch (erro) {
     console.log(erro)
   }
 }
 
 const progress = document.querySelector("progress") as HTMLProgressElement
+
+
+const imagem = document.querySelector("img") as HTMLImageElement
+const recberImagem = (link: string) => {
+  imagem.src = link
+}
+
+const exibirNomeMusica = (nome: string) => {
+  const exibirNome = document.querySelector("h3") as HTMLHeadElement;
+  exibirNome.innerHTML = nome;
+}
+
+const nomeDbanda = (nomeArtista: string) => {
+  const artistaNome = document.getElementById("artistaNome") as HTMLParagraphElement
+  artistaNome.innerHTML = nomeArtista
+}
+
+const musicaDeAgora = () => {
+  colocarAudio(musicas[0])
+  recberImagem(armazenarImagensMusicas[0])
+  exibirNomeMusica(tituloMusicas[0])
+  nomeDbanda(artistas[0])
+}
 
 const atualiarSegundosTempMusiuc = () => {
   const tempMusic = document.getElementById("tempMusic") as HTMLParagraphElement
@@ -36,12 +60,14 @@ const atualiarSegundosTempMusiuc = () => {
   const segundos = obterTemp - minutos * 60;
   const progresso = `${minutos} ${segundos}`
   tempMusic.innerHTML = progresso
+ 
 }
 
 const atualiarBarraProgresso = () => {
   const progressoMusica = document.getElementById("progressoMusica") as HTMLProgressElement
   const progressoo = (audio.currentTime / audio.duration) * 100
   progressoMusica.value = progressoo
+  
   if (progressoo === 100) {
     progressoMusica.value = 0
   }
@@ -53,18 +79,14 @@ audio.addEventListener("timeupdate", () => {
   atualiarBarraProgresso();
 })
 
-const testes = () => {
+const passarMusicas = () => {
   colocarAudio(musicas[4])
 }
 
 
 musicasGeradas()
 
-const imagem = document.querySelector("img") as HTMLImageElement
-const recberImagem = (link: string) => {
-  imagem.src = link
-  console.log(imagem);
-}
+
 
 
 const daPlayAudio = () => {
@@ -80,7 +102,6 @@ const playsOfEblock = (valor1: HTMLElement, valor2: HTMLElement): void => {
 
 botaoPlay.addEventListener("click", () => {
   daPlayAudio()
-  console.log(audio.duration);
   playsOfEblock(botaoPlay, pause)
 })
 

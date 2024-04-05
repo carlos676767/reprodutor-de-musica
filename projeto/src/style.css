@@ -17,6 +17,7 @@ main {
 
 img {
   width: 200px;
+  object-fit: cover;
 }
 
 .players {
@@ -66,5 +67,9 @@ i {
 }
 
 .coracaoWhite {
+  color: white;
+}
+
+h3, p{
   color: white;
 }
