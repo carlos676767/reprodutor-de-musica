@@ -13,7 +13,7 @@ const armazenarImagensMusicas: any[] = []
 
 const musicasGeradas = async () => {
   try {
-    const response = await fetch("https://api.deezer.com/chart/0/tracks");
+    const response = await fetch("https://api.deezer.com/chart/0/tracks?limit=100&country=ES");
     const date = await response.json();
     date.data.forEach((albuns: any) => {
       const { title, artist, preview, album } = albuns
@@ -86,16 +86,24 @@ const passarMusicas = () => {
   ++contarProximo
   for (let j = 0; j < armazenarImagensMusicas.length; j++) {
     if (contarProximo === j) {
+      colocarAudio(musicas[j])
       recberImagem(armazenarImagensMusicas[j])
+      exibirNomeMusica(tituloMusicas[j])
+      nomeDbanda(artistas[j])
+      playsOfEblock(pause, botaoPlay)
     }
   }
 }
 
 const musicaAnterior = () => {
   --contarProximo
-    for (let i = 0; i < armazenarImagensMusicas.length; i++) {
-      if (contarProximo == i) {
-        recberImagem(armazenarImagensMusicas[i])
+    for (let j = 0; j < armazenarImagensMusicas.length; j++) {
+      if (contarProximo == j) {
+        colocarAudio(musicas[j])
+        recberImagem(armazenarImagensMusicas[j])
+        exibirNomeMusica(tituloMusicas[j])
+        nomeDbanda(artistas[j])
+        playsOfEblock(pause, botaoPlay)
       } 
     }
 }
