@@ -8,21 +8,36 @@ const colocarAudio = (link: string) => {
 const tituloMusicas: any[] = []
 const artistas: any[] = []
 const musicas: any[] = []
+const armazenarImagensMusicas: any[] = []
 
 const musicasGeradas = async () => {
   try {
     const response = await fetch("https://api.deezer.com/chart/0/tracks");
     const date = await response.json();
     date.data.forEach((albuns: any) => {
-      const {title, artist, preview} = albuns
+      const {title, artist, preview, album} = albuns
       tituloMusicas.push(title)
       artistas.push(artist.name)
       musicas.push(preview)
+      armazenarImagensMusicas.push(album.cover_medium)
     });
+    testes()
   } catch (erro) {
     console.log(erro)
   }
 }
+
+const testes = () => {
+  console.log(tituloMusicas);
+  console.log(armazenarImagensMusicas);
+
+  for (let j = 0; j < tituloMusicas.length; j++) {
+    if (tituloMusicas[j] === "DEJA VU") {
+      return true
+    }
+  }
+}
+
 
 musicasGeradas()
 
