@@ -66,11 +66,8 @@ const atualiarSegundosTempMusiuc = () => {
 const atualiarBarraProgresso = () => {
   const progressoMusica = document.getElementById("progressoMusica") as HTMLProgressElement
   const progressoo = (audio.currentTime / audio.duration) * 100
-  progressoMusica.value = progressoo
-  
-  if (progressoo === 100) {
-    progressoMusica.value = 0
-  }
+  isFinite(progressoo) ? progressoMusica.value = progressoo : null
+  progressoo === 100 ? progressoMusica.value = 0 : null
 }
 
 
