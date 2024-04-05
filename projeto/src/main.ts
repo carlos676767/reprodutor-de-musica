@@ -10,6 +10,7 @@ const artistas: any[] = []
 const musicas: any[] = []
 const armazenarImagensMusicas: any[] = []
 
+
 const musicasGeradas = async () => {
   try {
     const response = await fetch("https://api.deezer.com/chart/0/tracks");
@@ -76,14 +77,43 @@ audio.addEventListener("timeupdate", () => {
   atualiarBarraProgresso();
 })
 
+
+
+
+let contarProximo: number = 0
+
 const passarMusicas = () => {
-  colocarAudio(musicas[4])
+  ++contarProximo
+  for (let j = 0; j < armazenarImagensMusicas.length; j++) {
+    if (contarProximo === j) {
+      recberImagem(armazenarImagensMusicas[j])
+    }
+  }
+}
+
+const musicaAnterior = () => {
+  --contarProximo
+    for (let i = 0; i < armazenarImagensMusicas.length; i++) {
+      if (contarProximo == i) {
+        recberImagem(armazenarImagensMusicas[i])
+      } 
+    }
 }
 
 
+const proximo = document.getElementById("proximo") as HTMLButtonElement
+proximo.addEventListener("click", () => {
+  passarMusicas()
+})
+
+const anterior = document.getElementById("anterior") as HTMLButtonElement
+
+
+anterior.addEventListener("click", () => {
+  musicaAnterior()
+})
+
 musicasGeradas()
-
-
 
 
 const daPlayAudio = () => {
