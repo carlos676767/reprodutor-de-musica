@@ -26,16 +26,18 @@ const musicasGeradas = async () => {
     console.log(erro)
   }
 }
+const progress = document.querySelector("progress") as HTMLProgressElement
+audio.addEventListener("timeupdate", () => {
+  const obterTemp = Math.floor(audio.currentTime)
+  const minutos = Math.floor(obterTemp / 60);
+  const segundos = obterTemp - minutos * 60;
+  const progresso = `${minutos} ${segundos}`
+  const teste = Number(progresso)
+  progress.value = teste
+})
 
 const testes = () => {
-  console.log(tituloMusicas);
-  console.log(armazenarImagensMusicas);
-
-  for (let j = 0; j < tituloMusicas.length; j++) {
-    if (tituloMusicas[j] === "DEJA VU") {
-      return true
-    }
-  }
+  colocarAudio(musicas[5])
 }
 
 
@@ -45,7 +47,6 @@ const imagem = document.querySelector("img") as HTMLImageElement
 const recberImagem = (link: string) => {
   imagem.src = link
   console.log(imagem);
-
 }
 
 
