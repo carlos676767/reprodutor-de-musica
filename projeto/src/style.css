@@ -10,7 +10,7 @@ main {
 }
 
 .filha {
-  background-color: #2F2E30;
+  background-image: linear-gradient(rgb(59,88,93),rgb(29,40,42));
   padding: 30px;
   border-radius: 10px;
 }
@@ -30,7 +30,7 @@ img {
 button {
   padding: 3px;
   border: none;
-  background-color: #2F2E30;
+  background-color: transparent;
 }
 
 i {
@@ -39,24 +39,19 @@ i {
   font-size: 30px;
 }
 
-.fa-volume-low,
-.fa-volume-high,
-.fa-volume-xmark,
-.fa-arrows-spin,
-.fa-repeat,
-.fa-heart {
+.fa-volume-low,.fa-volume-high {
   font-size: 10px;
   font-size: 10px;
 }
 
-
-.inputs {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.fa-volume-xmark, .fa-arrows-spin, .fa-repeat{
+  font-size: 13px;
 }
 
+
+.fa-heart{
+  font-size: 13px;
+}
 #pause,
 #desmutado {
   display: none;
@@ -72,4 +67,88 @@ i {
 
 h3, p{
   color: white;
+}
+.limitar {
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: 15px;
+}
+
+h3{
+  font-size: 13px;
+  font-weight: bolder;
+}
+
+
+
+.li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+  list-style: none;
+}
+
+#progressoMusica {
+  width: 100%;
+  height: 4px; 
+  border: none; 
+  background-color: #ddd; 
+  border-radius: 2px;
+}
+
+#progressoMusica::-webkit-progress-bar {
+  background-color: transparent; 
+}
+
+#progressoMusica::-webkit-progress-value {
+  background-color: #333;
+  border-radius: 2px; 
+}
+
+img{
+  border: 2px solid white;
+}
+
+ol{
+  display: flex;
+  flex-direction: column;
+}
+
+ol{
+  list-style: none;
+}
+
+
+.artistaECoracao {
+  display: flex;
+  align-items: center; 
+}
+
+#artistaNome, button {
+  margin-right: auto; 
+}
+
+#artistaNome {
+  color: rgb(120, 132, 134);
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 10px;
+}
+
+ #tempMusic {
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 12px;
+}
+.fa-heart {
+  margin-left: 5px; 
+}
+
+
+body{
+  background-image: linear-gradient(
+    rgb(59,88,93),
+    rgb(29,40,42)
+);
 }

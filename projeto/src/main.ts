@@ -54,15 +54,26 @@ const musicaDeAgora = () => {
   nomeDbanda(artistas[0])
 }
 
+
+const tempoTotalMusica =() => {
+  const tempoTotalMusica = document.getElementById("tempoTotalMusica") as HTMLParagraphElement
+  audio.addEventListener("loadedmetadata", () => {
+    const obterTemp = Math.floor(audio.duration)
+    const minutos = Math.floor(obterTemp / 60)
+    tempoTotalMusica.innerHTML = `${minutos}:${obterTemp}`
+  })
+ 
+}
+
 const atualiarSegundosTempMusiuc = () => {
   const tempMusic = document.getElementById("tempMusic") as HTMLParagraphElement
   const obterTemp = Math.floor(audio.currentTime)
   const minutos = Math.floor(obterTemp / 60);
   const segundos = obterTemp - minutos * 60;
   const progresso = `${minutos} ${segundos}`
-  tempMusic.innerHTML = progresso
- 
+  tempMusic.innerHTML = `00:${progresso}`
 }
+
 
 const atualiarBarraProgresso = () => {
   const progressoMusica = document.getElementById("progressoMusica") as HTMLProgressElement
@@ -73,8 +84,8 @@ const atualiarBarraProgresso = () => {
 
 
 audio.addEventListener("timeupdate", () => {
-  atualiarSegundosTempMusiuc();
   atualiarBarraProgresso();
+  atualiarSegundosTempMusiuc()
 })
 
 
@@ -120,7 +131,7 @@ const anterior = document.getElementById("anterior") as HTMLButtonElement
 anterior.addEventListener("click", () => {
   musicaAnterior()
 })
-
+tempoTotalMusica()
 musicasGeradas()
 
 
@@ -209,8 +220,13 @@ botaoRepitir.addEventListener("click", () => {
 
 const like = document.querySelector(".fa-heart") as HTMLElement
 
+
+const pesquisarMusica = document.getElementById("musica") as HTMLInputElement
+
+
 like.addEventListener("click", () => {
   like.classList.add("coracaoVermelho")
+  like.classList.remove("coracaoWhite")
   setTimeout(() => {
     like.classList.remove("coracaoVermelho")
     like.classList.add("coracaoWhite")
