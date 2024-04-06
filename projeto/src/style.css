@@ -136,7 +136,7 @@ ol{
   font-size: 10px;
 }
 
- #tempMusic {
+ #tempMusic, #tempoTotalMusica {
   color: white;
   font-family: 'Times New Roman', Times, serif;
   font-size: 12px;
@@ -151,4 +151,18 @@ body{
     rgb(59,88,93),
     rgb(29,40,42)
 );
+}
+
+#progressoMusica, #tempMusic, #tempoTotalMusica {
+  display: inline-block; 
+}
+
+#tempoTotalMusica {
+  float: right;
+}
+
+.inputs{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
