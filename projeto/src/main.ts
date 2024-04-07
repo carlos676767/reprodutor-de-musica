@@ -1,3 +1,5 @@
+
+import Swal from 'sweetalert2'
 const audio = new Audio()
 
 const colocarAudio = (link: string) => {
@@ -31,7 +33,7 @@ const musicasGeradas = async () => {
 }
 
 const progress = document.querySelector("progress") as HTMLProgressElement
-
+console.log(progress);
 
 const imagem = document.querySelector("img") as HTMLImageElement
 const recberImagem = (link: string) => {
@@ -149,19 +151,35 @@ const criarMostrarLteras = (musica: string, artista: string, preview: string, al
   })
 }
 
+const musica = document.getElementById("musica") as HTMLInputElement
+const valorVazio = () => {
+  return musica.value === ""
+}
+
+
+const mensagemVazio = () => {
+  Swal.fire({
+    text: "Por favor, digite o nome da música",
+    icon: "question"
+  });
+}
+
 
 const pesquisarMusicas = async () => {
-  const musica = document.getElementById("musica") as HTMLInputElement
-  try {
-    const data = await fetch(`https://api.deezer.com/search/track?q=${musica.value}&limit=10`)
-    const response = await data.json()
-    response.data.forEach((musicas: any) => {
-      const { title, artist, preview, album } = musicas
-      console.log(preview);
-      criarMostrarLteras(title, artist.name, preview, album.cover_medium)
-    });
-  } catch (error) {
-    console.error(error)
+  if (valorVazio()) {
+  mensagemVazio()
+  }else{
+    try {
+      const data = await fetch(`https://api.deezer.com/search/track?q=${musica.value}&limit=10`)
+      const response = await data.json()
+      response.data.forEach((musicas: any) => {
+        const { title, artist, preview, album } = musicas
+        console.log(preview);
+        criarMostrarLteras(title, artist.name, preview, album.cover_medium)
+      });
+    } catch (error) {
+      console.error(error)
+    }
   }
 }
 
@@ -170,7 +188,6 @@ const musicasPesauqisads = document.querySelector(".fa-magnifying-glass") as HTM
 musicasPesauqisads.addEventListener("click", () => {
   pesquisarMusicas()
 })
-
 
 
 
@@ -261,7 +278,6 @@ botaoRepitir.addEventListener("click", () => {
 
 const like = document.querySelector(".fa-heart") as HTMLElement
 
-const pesquisarMusica = document.getElementById("musica") as HTMLInputElement
 
 like.addEventListener("click", () => {
   like.classList.add("coracaoVermelho")

@@ -265,3 +265,19 @@ dialog{
     border-radius: 10px;
   }
 }
+
+
+.swal2-popup .swal2-actions .swal2-confirm {
+  background-image: linear-gradient(rgb(59,88,93),rgb(29,40,42));
+  color: white; 
+  border: none;
+  padding: 10px 24px; 
+  border-radius: 4px; 
+  cursor: pointer;
+  transition: background-color 0.3s; 
+}
+
+
+.swal2-popup .swal2-actions .swal2-confirm:hover {
+  background-color: #45a049; 
+}

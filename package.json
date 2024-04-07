@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "http-proxy-middleware": "^3.0.0"
+  },
+  "dependencies": {
+    "sweetalert2": "^11.10.7"
   }
 }
