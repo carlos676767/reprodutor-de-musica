@@ -7,6 +7,7 @@ main {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 5px;
 }
 
 .filha {
@@ -165,4 +166,32 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.fa-magnifying-glass{
+  font-size: 15px;
+}
+
+input{
+  border: none;
+  outline: none;
+
+}
+.playlist {
+  display: flex;
+  flex-direction: column;
+  width: 200px; 
+  max-height: 300px; 
+  overflow: auto; 
+  gap: 7px;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+#musica{
+  width: 90%;
+}
+
+#fa-magnifying-glass{
+  background-color: white;
 }

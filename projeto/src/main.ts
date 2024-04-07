@@ -55,14 +55,14 @@ const musicaDeAgora = () => {
 }
 
 
-const tempoTotalMusica =() => {
+const tempoTotalMusica = () => {
   const tempoTotalMusica = document.getElementById("tempoTotalMusica") as HTMLParagraphElement
   audio.addEventListener("loadedmetadata", () => {
     const obterTemp = Math.floor(audio.duration)
     const minutos = Math.floor(obterTemp / 60)
     tempoTotalMusica.innerHTML = `${minutos}:${obterTemp}`
   })
- 
+
 }
 
 const atualiarSegundosTempMusiuc = () => {
@@ -108,15 +108,15 @@ const passarMusicas = () => {
 
 const musicaAnterior = () => {
   --contarProximo
-    for (let j = 0; j < armazenarImagensMusicas.length; j++) {
-      if (contarProximo == j) {
-        colocarAudio(musicas[j])
-        recberImagem(armazenarImagensMusicas[j])
-        exibirNomeMusica(tituloMusicas[j])
-        nomeDbanda(artistas[j])
-        playsOfEblock(pause, botaoPlay)
-      } 
+  for (let j = 0; j < armazenarImagensMusicas.length; j++) {
+    if (contarProximo == j) {
+      colocarAudio(musicas[j])
+      recberImagem(armazenarImagensMusicas[j])
+      exibirNomeMusica(tituloMusicas[j])
+      nomeDbanda(artistas[j])
+      playsOfEblock(pause, botaoPlay)
     }
+  }
 }
 
 
@@ -131,6 +131,39 @@ const anterior = document.getElementById("anterior") as HTMLButtonElement
 anterior.addEventListener("click", () => {
   musicaAnterior()
 })
+
+const criarMostrarLteras = (musica: string, artista: string,  preview: string, album: string) => {
+  const nomeMusica = document.createElement("p") as HTMLParagraphElement
+  const playlist = document.querySelector(".playlist") as HTMLDivElement
+  nomeMusica.innerHTML = `${musica} - ${artista} `
+  playlist.appendChild(nomeMusica)
+  nomeMusica.addEventListener("click", () => {
+    colocarAudio(preview)
+    recberImagem(album)
+    
+  })
+}
+
+const pesquisarMusicas = async () => {
+  const musica = document.getElementById("musica") as HTMLInputElement
+  try {
+    const data = await fetch(`https://api.deezer.com/search/track?q=${musica.value}&limit=10`)
+    const response = await data.json()
+    response.data.forEach((musicas: any) => {
+      const { title, artist, preview, album } = musicas
+      console.log(album);
+      criarMostrarLteras(title, artist.name, preview, album.cover_medium)
+    });
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const musicasPesauqisads = document.querySelector(".fa-magnifying-glass") as HTMLElement
+musicasPesauqisads.addEventListener("click", () => {
+  pesquisarMusicas()
+})
+
 tempoTotalMusica()
 musicasGeradas()
 
@@ -222,6 +255,8 @@ const like = document.querySelector(".fa-heart") as HTMLElement
 
 
 const pesquisarMusica = document.getElementById("musica") as HTMLInputElement
+
+
 
 
 like.addEventListener("click", () => {
