@@ -45,7 +45,7 @@ i {
   font-size: 10px;
 }
 
-.fa-volume-xmark, .fa-arrows-spin, .fa-repeat{
+.fa-volume-xmark, .fa-arrows-spin, .fa-repeat, .fa-list{
   font-size: 13px;
 }
 
@@ -152,6 +152,7 @@ body{
     rgb(59,88,93),
     rgb(29,40,42)
 );
+
 }
 
 #progressoMusica, #tempMusic, #tempoTotalMusica {
@@ -190,7 +191,14 @@ input{
 
 #musica{
   width: 90%;
+  background-image: linear-gradient(rgb(59,88,93),rgb(29,40,42));
+  color: white;
 }
+
+#label{
+  background-image: linear-gradient(rgb(59,88,93),rgb(29,40,42));
+}
+
 
 #fa-magnifying-glass{
   background-color: white;
@@ -198,4 +206,62 @@ input{
 
 i{
   cursor: pointer;
+}
+
+dialog{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.testes {
+  color: red;
+}
+
+
+.playlist::-webkit-scrollbar {
+  width: 10px;
+}
+
+.playlist::-webkit-scrollbar-track {
+  background-image: linear-gradient(rgb(59,88,93),rgb(29,40,42));
+  cursor: pointer;
+}
+
+.playlist::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(rgb(59,88,93),rgb(29,40,42));
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.playlist::-webkit-scrollbar-thumb:hover {
+  background-image: linear-gradient(rgb(59,88,93),rgb(29,40,42));
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  main {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .playlist {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    max-height: 300px;
+    overflow: auto;
+    gap: 10px;
+    padding: 30px;
+    border-radius: 10px;
+  }
 }

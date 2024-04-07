@@ -1,68 +1,70 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="src/style.css">
-  </head>
-  <body>
-  
-    
-    <main>
-      <div class="filha">
-        <div class="imagem">
-          <img src="https://img.freepik.com/vetores-gratis/modelo-de-capa-de-album-gradiente_23-2150597431.jpg?w=740"
-            alt="imagemmusica">
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reprodutor de musica</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="src/style.css">
+</head>
+
+<body>
+
+  <main>
+    <div class="filha">
+      <div class="imagem">
+        <img src="https://img.freepik.com/vetores-gratis/modelo-de-capa-de-album-gradiente_23-2150597431.jpg?w=740"
+          alt="imagemmusica">
+      </div>
+
+      <div class="coisas">
+        <div class="limitar">
+          <h3>era uma vez</h3>
         </div>
-    
-    
-        <div class="coisas">
-          <div class="limitar">
-            <h3>era uma vez</h3>
-          </div>
-    
-    
-          <div class="artistaECoracao">
-            <p id="artistaNome"></p>
-            <i class="fa-solid fa-heart"></i>
-          </div>
+
+        <div class="artistaECoracao">
+          <p id="artistaNome"></p>
+          <i class="fa-solid fa-heart"></i>
         </div>
-    
-    
-        <div class="mostrarPercorre">
-          <progress id="progressoMusica" max="100" value="0"></progress>
-          <p id="tempMusic">00:00</p>
-          <p id="tempoTotalMusica"></p>
-        </div>
-    
-        <div class="inputs">
-          <label ><i class="fa-solid fa-volume-low"></i> <input type="range" name="" id="baixarVolume" min="0" max="50"
-              value="50" class="slider"><i class="fa-solid fa-volume-high"></i></label>
-        </div>
-        <div class="players">
-          <button>     <li class="li"><i class="fa-solid fa-repeat"></i></li></button>
+      </div>
+
+      <div class="mostrarPercorre">
+        <progress id="progressoMusica" max="100" value="0"></progress>
+        <p id="tempMusic">00:00</p>
+        <p id="tempoTotalMusica"></p>
+      </div>
+
+      <div class="inputs">
+        <label><i class="fa-solid fa-volume-low"></i> <input type="range" name="" id="baixarVolume" min="0" max="50"
+            value="50" class="slider"><i class="fa-solid fa-volume-high"></i></label>
+      </div>
+      <div class="players">
+        <button>
+          <li class="li"><i class="fa-solid fa-repeat"></i></li>
+        </button>
+
+        <button id='restart'>
+          <li class="li"><i class="fa-solid fa-arrows-spin" id="restart"></i></li>
+        </button>
+        <button id="anterior"> <i class="fas fa-step-backward setas anterior"></i></button>
+        <button id="play"> <i class="fas fa-play-circle botao-play"></i></button>
+        <button id="pause"> <i class="fas fa-pause-circle botao-pause"></i></button>
+        <button id="proximo"> <i class="fas fa-step-forward setas proxima"></i></button>
+        <button><i class="fa-solid fa-volume-xmark"></i><i class="fa-solid fa-volume-high" id="desmutado"></i></button>
+      </div>
+    </div>
+    <div class="playlistepesquisa">
+      <label class="label" id="label"><input type="text" id="musica"><i
+          class="fa-solid fa-magnifying-glass"></i></label>
+      <div class="playlist">
      
-          <button id='restart'> <li class="li"><i class="fa-solid fa-arrows-spin" id="restart"></i></li></button>
-          <button id="anterior"> <i class="fas fa-step-backward setas anterior"></i></button>
-          <button id="play"> <i class="fas fa-play-circle botao-play"></i></button>
-          <button id="pause"> <i class="fas fa-pause-circle botao-pause"></i></button>
-          <button id="proximo"> <i class="fas fa-step-forward setas proxima"></i></button>
-          <button><i class="fa-solid fa-volume-xmark"></i><i class="fa-solid fa-volume-high" id="desmutado"></i></button>
-        </div>
-    
       </div>
-      <div class="playlistepesquisa">
-        <label class="label" id="label"><input type="text" id="musica"><i class="fa-solid fa-magnifying-glass"></i></label>
-        <div class="playlist">
-          
-        </div>
-      </div>
-    </main>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-    </body>
-    
-    </html>
+    </div>
+  </main>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

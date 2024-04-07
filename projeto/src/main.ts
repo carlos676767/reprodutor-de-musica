@@ -21,6 +21,7 @@ const musicasGeradas = async () => {
       artistas.push(artist.name)
       musicas.push(preview)
       armazenarImagensMusicas.push(album.cover_medium)
+      criarMostrarLteras(title, artist.name, preview, album.cover_medium)
     });
     passarMusicas()
     musicaDeAgora()
@@ -118,6 +119,7 @@ const musicaAnterior = () => {
 }
 
 
+
 const proximo = document.getElementById("proximo") as HTMLButtonElement
 proximo.addEventListener("click", () => {
   passarMusicas()
@@ -130,8 +132,9 @@ anterior.addEventListener("click", () => {
   musicaAnterior()
 })
 
+
 const criarMostrarLteras = (musica: string, artista: string, preview: string, album: string) => {
-  const nomeMusica = document.createElement("p") as HTMLParagraphElement
+  const nomeMusica: HTMLParagraphElement = document.createElement("p")
   const playlist = document.querySelector(".playlist") as HTMLDivElement
   nomeMusica.innerHTML = `${musica} - ${artista} `
   playlist.appendChild(nomeMusica)
@@ -139,13 +142,13 @@ const criarMostrarLteras = (musica: string, artista: string, preview: string, al
     colocarAudio(preview)
     recberImagem(album)
     atualiarSegundosTempMusiuc()
-    atualiarSegundosTempMusiuc()
     tempoTotalMusica()
     nomeDbanda(artista)
     exibirNomeMusica(musica)
-    playsOfEblock(pause,botaoPlay)
+    playsOfEblock(pause, botaoPlay)
   })
 }
+
 
 const pesquisarMusicas = async () => {
   const musica = document.getElementById("musica") as HTMLInputElement
@@ -162,14 +165,17 @@ const pesquisarMusicas = async () => {
   }
 }
 
+
 const musicasPesauqisads = document.querySelector(".fa-magnifying-glass") as HTMLElement
 musicasPesauqisads.addEventListener("click", () => {
   pesquisarMusicas()
 })
 
+
+
+
 tempoTotalMusica()
 musicasGeradas()
-
 
 const daPlayAudio = () => {
   audio.play()
