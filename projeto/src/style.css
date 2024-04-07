@@ -281,3 +281,8 @@ dialog{
 .swal2-popup .swal2-actions .swal2-confirm:hover {
   background-color: #45a049; 
 }
+
+.fa-repeat-1{
+  display: none;
+  font-size: 5px;
+}

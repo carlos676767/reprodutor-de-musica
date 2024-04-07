@@ -267,10 +267,20 @@ restart.addEventListener("click", () => {
 })
 
 const botaoRepitir = document.querySelector(".fa-repeat") as HTMLElement
-
+const botaoVoltarParaNaoRepetir = document.querySelector(".fa-repeat-1") as HTMLElement
 const musicaEmLoppInfinito = () => {
   audio.loop = true
+  playsOfEblock(botaoRepitir, botaoVoltarParaNaoRepetir)
 }
+
+const musicaSemLoop = () => {
+  audio.loop = false
+}
+
+botaoVoltarParaNaoRepetir?.addEventListener("click", () => {
+  musicaSemLoop()
+  playsOfEblock( botaoVoltarParaNaoRepetir, botaoRepitir)
+})
 
 botaoRepitir.addEventListener("click", () => {
   musicaEmLoppInfinito()
