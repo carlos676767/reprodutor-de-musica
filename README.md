@@ -2,6 +2,10 @@
 
 Este é um aplicativo de música web que utiliza a API do Deezer para reprodução de músicas.
 
+
+![image](https://github.com/carlos676767/reprodutor-de-musica/assets/139733392/7816a051-3542-41ce-b805-8d021ccb6c64)
+
+
 ## Funcionalidades
 
 - **Tempo Total da Música:** Exibe o tempo total da música em minutos e segundos.
