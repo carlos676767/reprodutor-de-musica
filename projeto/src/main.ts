@@ -89,14 +89,12 @@ audio.addEventListener("timeupdate", () => {
 })
 
 
-
-
-let contarProximo: number = 0
+let contarMusicas: number = 0
 
 const passarMusicas = () => {
-  ++contarProximo
+  ++contarMusicas
   for (let j = 0; j < armazenarImagensMusicas.length; j++) {
-    if (contarProximo === j) {
+    if (contarMusicas === j) {
       colocarAudio(musicas[j])
       recberImagem(armazenarImagensMusicas[j])
       exibirNomeMusica(tituloMusicas[j])
@@ -107,9 +105,9 @@ const passarMusicas = () => {
 }
 
 const musicaAnterior = () => {
-  --contarProximo
+  --contarMusicas
   for (let j = 0; j < armazenarImagensMusicas.length; j++) {
-    if (contarProximo == j) {
+    if (contarMusicas == j) {
       colocarAudio(musicas[j])
       recberImagem(armazenarImagensMusicas[j])
       exibirNomeMusica(tituloMusicas[j])
@@ -132,7 +130,7 @@ anterior.addEventListener("click", () => {
   musicaAnterior()
 })
 
-const criarMostrarLteras = (musica: string, artista: string,  preview: string, album: string) => {
+const criarMostrarLteras = (musica: string, artista: string, preview: string, album: string) => {
   const nomeMusica = document.createElement("p") as HTMLParagraphElement
   const playlist = document.querySelector(".playlist") as HTMLDivElement
   nomeMusica.innerHTML = `${musica} - ${artista} `
@@ -140,7 +138,11 @@ const criarMostrarLteras = (musica: string, artista: string,  preview: string, a
   nomeMusica.addEventListener("click", () => {
     colocarAudio(preview)
     recberImagem(album)
-    
+    atualiarSegundosTempMusiuc()
+    atualiarSegundosTempMusiuc()
+    tempoTotalMusica()
+    nomeDbanda(artista)
+    exibirNomeMusica(musica)
   })
 }
 
@@ -151,7 +153,7 @@ const pesquisarMusicas = async () => {
     const response = await data.json()
     response.data.forEach((musicas: any) => {
       const { title, artist, preview, album } = musicas
-      console.log(album);
+      console.log(preview);
       criarMostrarLteras(title, artist.name, preview, album.cover_medium)
     });
   } catch (error) {
@@ -250,14 +252,9 @@ botaoRepitir.addEventListener("click", () => {
   musicaEmLoppInfinito()
 })
 
-
 const like = document.querySelector(".fa-heart") as HTMLElement
 
-
 const pesquisarMusica = document.getElementById("musica") as HTMLInputElement
-
-
-
 
 like.addEventListener("click", () => {
   like.classList.add("coracaoVermelho")

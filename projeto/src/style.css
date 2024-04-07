@@ -195,3 +195,7 @@ input{
 #fa-magnifying-glass{
   background-color: white;
 }
+
+i{
+  cursor: pointer;
+}
