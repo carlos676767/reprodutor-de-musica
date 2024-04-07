@@ -143,6 +143,7 @@ const criarMostrarLteras = (musica: string, artista: string, preview: string, al
     tempoTotalMusica()
     nomeDbanda(artista)
     exibirNomeMusica(musica)
+    playsOfEblock(pause,botaoPlay)
   })
 }
 
