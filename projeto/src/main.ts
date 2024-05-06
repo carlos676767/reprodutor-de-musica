@@ -14,9 +14,16 @@ const carregarMusicaColocada = (): void => {
 };
 
 
+const carregarImg = (): void => {
+  const carregarImagens: HTMLInputElement = document.getElementById('carregarImagens') as HTMLInputElement;
+  carregarImagens.addEventListener("change", () => {
+    recberImagem(URL.createObjectURL(carregarImagens.files[0])) 
+  });
+};
 
 
 carregarMusicaColocada();
+carregarImg();
 
 const tituloMusicas: any[] = [];
 const artistas: any[] = [];
