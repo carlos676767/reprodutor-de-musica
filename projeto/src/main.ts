@@ -1,9 +1,22 @@
 import Swal from "sweetalert2";
 const audio = new Audio();
 
-const colocarAudio = (link: string) => {
+const colocarAudio = (link: string): void => {
   audio.src = link;
 };
+
+
+const carregarMusicaColocada = (): void => {
+  const inputFile: HTMLInputElement = document.getElementById('inputFile') as HTMLInputElement;
+  inputFile.addEventListener("change", () => {
+   colocarAudio(URL.createObjectURL(inputFile.files[0])) 
+  });
+};
+
+
+
+
+carregarMusicaColocada();
 
 const tituloMusicas: any[] = [];
 const artistas: any[] = [];
@@ -32,36 +45,32 @@ const musicasGeradas = async () => {
 };
 
 const progress = document.querySelector("progress") as HTMLProgressElement;
-console.log(progress);
+
 
 const imagem = document.querySelector("img") as HTMLImageElement;
-const recberImagem = (link: string) => {
+const recberImagem = (link: string): void => {
   imagem.src = link;
 };
 
-const exibirNomeMusica = (nome: string) => {
+const exibirNomeMusica = (nome: string) : void => {
   const exibirNome = document.querySelector("h3") as HTMLHeadElement;
   exibirNome.innerHTML = nome;
 };
 
-const nomeDbanda = (nomeArtista: string) => {
-  const artistaNome = document.getElementById(
-    "artistaNome"
-  ) as HTMLParagraphElement;
+const nomeDbanda = (nomeArtista: string) : void => {
+  const artistaNome = document.getElementById("artistaNome") as HTMLParagraphElement;
   artistaNome.innerHTML = nomeArtista;
 };
 
-const musicaDeAgora = () => {
+const musicaDeAgora = () : void => {
   colocarAudio(musicas[0]);
   recberImagem(armazenarImagensMusicas[0]);
   exibirNomeMusica(tituloMusicas[0]);
   nomeDbanda(artistas[0]);
 };
 
-const tempoTotalMusica = () => {
-  const tempoTotalMusica = document.getElementById(
-    "tempoTotalMusica"
-  ) as HTMLParagraphElement;
+const tempoTotalMusica = () : void => {
+  const tempoTotalMusica = document.getElementById("tempoTotalMusica") as HTMLParagraphElement;
   audio.addEventListener("loadedmetadata", () => {
     const obterTemp = Math.floor(audio.duration);
     const minutos = Math.floor(obterTemp / 60);
@@ -69,7 +78,7 @@ const tempoTotalMusica = () => {
   });
 };
 
-const atualiarSegundosTempMusiuc = () => {
+const atualiarSegundosTempMusiuc = () : void => {
   const tempMusic = document.getElementById(
     "tempMusic"
   ) as HTMLParagraphElement;
@@ -80,21 +89,21 @@ const atualiarSegundosTempMusiuc = () => {
   tempMusic.innerHTML = `00:${progresso}`;
 };
 
-const atualiarBarraProgresso = () => {
+const atualiarBarraProgresso = () : void => {
   const progressoMusica = document.getElementById("progressoMusica" ) as HTMLProgressElement;
   const progressoo = (audio.currentTime / audio.duration) * 100;
   isFinite(progressoo) ? (progressoMusica.value = progressoo) : null;
   progressoo === 100 ? (progressoMusica.value = 0) : null;
 };
 
-audio.addEventListener("timeupdate", () => {
+audio.addEventListener("timeupdate", () : void => {
   atualiarBarraProgresso();
   atualiarSegundosTempMusiuc();
 });
 
 let contarMusicas: number = 0;
 
-const passarMusicas = () => {
+const passarMusicas = () :void => {
   ++contarMusicas;
   for (let j = 0; j < armazenarImagensMusicas.length; j++) {
     if (contarMusicas === j) {
@@ -131,7 +140,12 @@ anterior.addEventListener("click", () => {
   musicaAnterior();
 });
 
-const criarMostrarLteras = (musica: string,artista: string, preview: string,album: string) => {
+const criarMostrarLteras = (
+  musica: string,
+  artista: string,
+  preview: string,
+  album: string
+) => {
   const nomeMusica: HTMLParagraphElement = document.createElement("p");
   const playlist = document.querySelector(".playlist") as HTMLDivElement;
   nomeMusica.innerHTML = `${musica} - ${artista} `;
@@ -164,7 +178,9 @@ const pesquisarMusicas = async () => {
     mensagemVazio();
   } else {
     try {
-      const data = await fetch(`https://api.deezer.com/search/track?q=${musica.value}&limit=10`);
+      const data = await fetch(
+        `https://api.deezer.com/search/track?q=${musica.value}&limit=10`
+      );
       const response = await data.json();
       response.data.forEach((musicas: any) => {
         const { title, artist, preview, album } = musicas;
@@ -268,7 +284,7 @@ const musicaSemLoop = () => {
   audio.loop = false;
 };
 
-botaoVoltarParaNaoRepetir?.addEventListener("click", () => {
+botaoVoltarParaNaoRepetir.addEventListener("click", () => {
   musicaSemLoop();
   playsOfEblock(botaoVoltarParaNaoRepetir, botaoRepitir);
 });
